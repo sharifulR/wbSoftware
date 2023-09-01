@@ -43,7 +43,7 @@ data class AllLeadResponse(
             @SerializedName("address_1")
             val address1: String,
             @SerializedName("address_2")
-            val address2: Any,
+            val address2: String,
             @SerializedName("created_at")
             val createdAt: String,
             @SerializedName("district_data")
@@ -51,7 +51,7 @@ data class AllLeadResponse(
             @SerializedName("district_id")
             val districtId: Int,
             @SerializedName("email")
-            val email: Any,
+            val email: String,
             @SerializedName("id")
             val id: Int,
             @SerializedName("image")
@@ -63,7 +63,7 @@ data class AllLeadResponse(
             @SerializedName("mobile_1")
             val mobile1: String,
             @SerializedName("mobile_2")
-            val mobile2: Any,
+            val mobile2: String,
             @SerializedName("monthly_charge")
             val monthlyCharge: String,
             @SerializedName("organization")
