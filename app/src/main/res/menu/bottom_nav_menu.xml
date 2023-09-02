@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/myLeadNavId"
+        android:title="mylead"
+        android:icon="@drawable/ic_lead"/>
+
+    <item android:id="@+id/allLeadNavId"
+        android:title="alllead"
+        android:icon="@drawable/list_24"/>
+    <item android:id="@+id/projectNavId"
+        android:title="projects"
+        android:icon="@drawable/inventory_24"/>
+    <item android:id="@+id/profileNavId"
+        android:title="Account"
+        android:icon="@drawable/ic_user"/>
+</menu>

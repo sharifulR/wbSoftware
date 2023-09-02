@@ -12,8 +12,10 @@ import androidx.navigation.fragment.findNavController
 import com.wb.wbsoftware.databinding.FragmentLoginBinding
 import com.wb.wbsoftware.models.auth.LoginRequest
 import com.wb.wbsoftware.network.NetworkResult
+import com.wb.wbsoftware.utils.TokenManager
 import com.wb.wbsoftware.viewModels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -23,12 +25,17 @@ class LoginFragment : Fragment() {
 
     private val authViewModel by viewModels<AuthViewModel>()
 
+    @Inject
+    lateinit var tokenManager: TokenManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding= FragmentLoginBinding.inflate(inflater,container, false)
+        tokenManager=TokenManager(requireContext())
+        val isLogin=tokenManager.isLogin
 
         binding.btnSignIn.setOnClickListener {
             val validationResult= validateUserInput()
@@ -40,6 +47,7 @@ class LoginFragment : Fragment() {
             }
 
         }
+
 
 
         return binding.root
@@ -66,6 +74,7 @@ class LoginFragment : Fragment() {
 
             when(it){
                 is NetworkResult.Success ->{
+                    tokenManager.saveToken(it.data!!.accessToken)
                     findNavController().navigate(R.id.action_loginFragment_to_myLeadFragment)
                 }
                 is NetworkResult.Error -> {

@@ -17,4 +17,8 @@ class TokenManager@Inject constructor(@ApplicationContext context: Context) {
     fun getToken():String?{
         return prefs.getString(Constants.USER_TOKEN,null)
     }
+
+    var isLogin: Boolean?
+        get() = prefs.getBoolean("is_login", false)
+        set(isLogin) = prefs.edit().putBoolean("is_login", isLogin!!).apply()
 }

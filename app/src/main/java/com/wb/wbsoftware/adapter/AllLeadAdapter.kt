@@ -14,8 +14,8 @@ import com.wb.wbsoftware.databinding.ItemLeadsListBinding
 import com.wb.wbsoftware.models.leads.AllLeadResponse
 import com.wb.wbsoftware.utils.Constants
 
-class AllLeadAdapter(): ListAdapter<AllLeadResponse.Data.Data, AllLeadAdapter.ClassViewHolder>(ComparatorDiffUtil()) {
-    class ClassViewHolder(private val binding: ItemLeadsListBinding) : RecyclerView.ViewHolder(binding.root) {
+class AllLeadAdapter(): ListAdapter<AllLeadResponse.Data.Data, AllLeadAdapter.LeadsViewHolder>(ComparatorDiffUtil()) {
+    class LeadsViewHolder(private val binding: ItemLeadsListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(allLead: AllLeadResponse.Data.Data){
             binding.tvProjectName.text=allLead.organization
@@ -46,12 +46,12 @@ class AllLeadAdapter(): ListAdapter<AllLeadResponse.Data.Data, AllLeadAdapter.Cl
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeadsViewHolder {
         val binding= ItemLeadsListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ClassViewHolder(binding)
+        return LeadsViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ClassViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LeadsViewHolder, position: Int) {
         val allClass= getItem(position)
         allClass?.let {
             holder.bind(it)
